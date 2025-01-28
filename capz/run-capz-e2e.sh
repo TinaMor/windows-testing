@@ -100,6 +100,7 @@ create_gmsa_domain(){
 run_capz_e2e_cleanup() {
     log "cleaning up"
 
+    source "${CAPZ_DIR}/scripts/ci-build-azure-ccm.sh" || false
     capz::ci-build-azure-ccm::cleanup || true
 
     if [[ "$(capz::util::should_build_kubernetes)" == "true" ]]; then
